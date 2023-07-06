@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { LoginServicesService } from '../login-services.service';
+import { Router } from '@angular/router';
 
 export type loginTemp = {
   BuildingName: string;
@@ -13,7 +15,12 @@ export type loginTemp = {
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private login: LoginServicesService,
+    private route: Router
+  ) {}
 
   loginForm = this.fb.group({
     BuildingName: ['', Validators.required],
@@ -39,6 +46,9 @@ export class LoginComponent {
       this.http
         .post('https://team4-api-naf.azurewebsites.net/Building', this.obj)
         .subscribe((val) => console.log(val));
+      this.login.BuildingName = this.loginForm.value.BuildingName as string;
+      this.login.NumberOfFloors = this.loginForm.value.NoOfFloors as any;
+      this.route.navigate(['/liftPage']);
     }
   }
 }
