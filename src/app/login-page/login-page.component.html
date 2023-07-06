@@ -1,0 +1,13 @@
+<form
+  class="example-form"
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmitDetails()"
+>
+  <mat-form-field class="example-full-width">
+    <mat-label>BuildingName</mat-label>
+    <input matInput type="text" formControlName="BuildingName" />
+  </mat-form-field>
+  <br />
+  <button type="submit">Login</button><br />
+  <button type="submit" routerLink="/">Sign Up</button>
+</form>
