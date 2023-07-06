@@ -14,6 +14,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { LiftPageComponent } from './lift-page/lift-page.component';
 import { LoginPersonComponent } from './login-person/login-person.component';
+import { MatButtonModule } from '@angular/material/button';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -39,6 +40,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     MatRadioModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
